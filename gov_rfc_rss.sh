@@ -18,7 +18,7 @@
 ############################################################################### 
 export SCRIPT_DIR="$(dirname "$(readlink -f "$0")")"
 export INSTALL_DIR="$(dirname "$(readlink -f "$0")")"
-LOUD=0
+LOUD=1
 wget_bin=$(which wget)
 TEMPDIR=$(mktemp -d)
 export self_link=https://example.com/rss.xml
@@ -33,10 +33,11 @@ fi
 
 if [ ! -d "${XDG_DATA_HOME}/gov_rfc_rss" ];then
     mkdir -p "${XDG_DATA_HOME}/gov_rfc_rss"
-    export DATADIR="${XDG_DATA_HOME}/gov_rfc_rss"
+    
 fi
 
 # Now we can set these
+export DATADIR="${XDG_DATA_HOME}/gov_rfc_rss"
 ArchiveFile="${DATADIR}/retrieved_urls.txt"
 export RSSSavePath="${DATADIR}/gov_rfc_rss.xml"
 
@@ -110,7 +111,7 @@ function loud() {
 
 #Use chromium to get web page
 loud "# Grabbing search page data"
-${chromium_bin} --headless --dump-dom --virtual-time-budget=10000 --timeout=10000 "https://www.govinfo.gov/app/search/%7B%22query%22%3A%22%5C%22request%20for%20comment%5C%22%22%2C%22offset%22%3A0%2C%22sortBy%22%3A%222%22%2C%22pageSize%22%3A100%7D" > "${TEMPDIR}/dom.html"
+${chromium_bin} --headless --dump-dom --virtual-time-budget=10000 --timeout=10000 "https://www.govinfo.gov/app/search/%7B%22query%22%3A%22%5C%22request%20for%20comment%5C%22%22%2C%22offset%22%3A0%2C%22sortBy%22%3A%222%22%2C%22pageSize%22%3A10%7D" > "${TEMPDIR}/dom.html"
 
 #Use sed to extract articles
 loud "# Extracting articles"
@@ -128,7 +129,9 @@ do
         # url is not in file
         loud "# Getting page of RFC"
         link="${line}"
-        description=$(wget "${line}" --convert-links -O- | sed -n '/<pre/,/<\/pre>/p')
+        wget "${line}" --convert-links -O "${TEMPDIR}/tmphtml"
+        description=$(cat "${TEMPDIR}/tmphtml" | sed -n '/<pre/,/<\/pre>/p')
+        rm "${TEMPDIR}/tmphtml"
         title=$(echo "${description}" | fmt -w 1111 | grep -B 2 -e "^AGENCY" | head -n 1)
         # add to rss
         loud "# Adding to RSS"
