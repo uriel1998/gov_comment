@@ -25,6 +25,8 @@ export self_link=https://example.com/rss.xml
 link=""
 description=""
 title=""
+category=""
+filedtime=""
 
 if [ -z "${XDG_DATA_HOME}" ];then
     export XDG_DATA_HOME="${HOME}/.local/share"
@@ -80,18 +82,62 @@ function rss_gen_send {
     fi
     TITLE="${title}"
     LINK=$(printf "href=\"%s\"" "${link}")
-    DATE="`date`"
+    DATE="${filedtime}"
     DESC=$(printf "\n%s\n" "${description}")
     GUID="${link}" 
     loud "[info] Adding entry to RSS feed"
-    xmlstarlet ed -L   -a "//channel" -t elem -n item -v ""  \
-         -s "//item[1]" -t elem -n title -v "$TITLE" \
-         -s "//item[1]" -t elem -n link -v "$LINK" \
-         -s "//item[1]" -t elem -n pubDate -v "$DATE" \
-         -s "//item[1]" -t elem -n description -v "$DESC" \
-         -s "//item[1]" -t elem -n guid -v "$GUID" \
-         -d "//item[position()>10]"  "${RSSSavePath}" ; 
+    xmlstarlet ed -L \
+    -s "//channel" -t elem -n item -v "" \
+    -s "//channel/item[last()]" -t elem -n title -v "$TITLE" \
+    -s "//channel/item[last()]" -t elem -n link -v "$LINK" \
+    -s "//channel/item[last()]" -t elem -n pubDate -v "$DATE" \
+    -s "//channel/item[last()]" -t elem -n description -v "$DESC" \
+    -s "//channel/item[last()]" -t elem -n category -v "${category}" \
+    -s "//channel/item[last()]" -t elem -n guid -v "$GUID" \
+    -d "//channel/item[position()>100]" "${RSSSavePath}" ;
+    
 }
+
+convert_filedtime_rfc2822() {
+    local input="${@}"
+    local date_str time_str datetime_str
+ 
+    # Extract the date and time using grep and sed
+    date_str=$(echo "${input}" | grep -oP 'Filed \K[0-9-]+')
+    time_str=$(echo "${input}" | grep -oP '[0-9]{1,2}:[0-9]{2} [ap]m')
+ 
+    if [[ -n "$date_str" && -n "$time_str" ]]; then
+        # Convert date format from M-D-YY to MM-DD-YYYY
+        month=$(echo "$date_str" | cut -d'-' -f1)
+        day=$(echo "$date_str" | cut -d'-' -f2)
+        year=$(echo "$date_str" | cut -d'-' -f3)
+
+        # Ensure month and day have leading zeroes if needed
+        month=$(printf "%02d" "$month")
+        day=$(printf "%02d" "$day")
+
+        # Convert 2-digit year to 4-digit (assuming 2000+)
+        if [[ "$year" -lt 100 ]]; then
+            year=$((2000 + year))
+        fi
+
+        # Convert time to 24-hour format
+        datetime_str="$month/$day/$year $time_str"
+        formatted_datetime=$(date -d "$datetime_str" +"%a, %d %b %Y %H:%M:%S %z" 2>/dev/null)
+ 
+        if [[ -n "$formatted_datetime" ]]; then
+            loud "FiledTime: $formatted_datetime"
+            filedtime="${formatted_datetime}"
+        else
+            loud "Error: Invalid date/time format."
+            return 1
+        fi
+    else
+        echo "Error: Date or time not found."
+        return 1
+    fi
+}
+
 
 
 function loud() {
@@ -111,7 +157,7 @@ function loud() {
 
 #Use chromium to get web page
 loud "# Grabbing search page data"
-${chromium_bin} --headless --dump-dom --virtual-time-budget=10000 --timeout=10000 "https://www.govinfo.gov/app/search/%7B%22query%22%3A%22%5C%22request%20for%20comment%5C%22%22%2C%22offset%22%3A0%2C%22sortBy%22%3A%222%22%2C%22pageSize%22%3A10%7D" > "${TEMPDIR}/dom.html"
+${chromium_bin} --headless --dump-dom --virtual-time-budget=10000 --timeout=10000 "https://www.govinfo.gov/app/search/%7B%22query%22%3A%22%5C%22request%20for%20comment%5C%22%22%2C%22offset%22%3A0%2C%22sortBy%22%3A%222%22%2C%22pageSize%22%3A100%7D" > "${TEMPDIR}/dom.html"
 
 #Use sed to extract articles
 loud "# Extracting articles"
@@ -130,9 +176,12 @@ do
         loud "# Getting page of RFC"
         link="${line}"
         wget "${line}" --convert-links -O "${TEMPDIR}/tmphtml"
-        description=$(cat "${TEMPDIR}/tmphtml" | sed -n '/<pre/,/<\/pre>/p')
+        description=$(cat "${TEMPDIR}/tmphtml" | sed -n '/<pre/,/<\/pre>/p' |recode ascii..html )
         rm "${TEMPDIR}/tmphtml"
         title=$(echo "${description}" | fmt -w 1111 | grep -B 2 -e "^AGENCY" | head -n 1)
+        category=$(echo "${description}" | fmt -w 1111 | grep -e "^AGENCY" | awk -F ': ' '{print $2}')
+        tempstring=$(echo "${description}" | grep -e "FR Doc" | grep -e "Filed" )
+        convert_filedtime_rfc2822 "${tempstring}"
         # add to rss
         loud "# Adding to RSS"
         rss_gen_send 
@@ -142,6 +191,7 @@ do
         link=""
         description=""
         title=""
+        category=""
     fi
 done
 
