@@ -31,7 +31,7 @@ I won't say that's on *purpose*, but...
 
 After the script runs, there's a git commit and push to github. 
 
-A large chunk of this is adapted from [agaetr](https://github.com/uriel1998/agaetr).
+A large chunk of this is adapted from [agaetr](https://github.com/uriel1998/agaetr). Honestly, you probably want to use that or the feed link above.
 
 ## 2. License
 
