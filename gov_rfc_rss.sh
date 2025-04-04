@@ -27,7 +27,8 @@ description=""
 title=""
 category=""
 filedtime=""
-
+ai_description=""
+due_time=""
 if [ -z "${XDG_DATA_HOME}" ];then
     export XDG_DATA_HOME="${HOME}/.local/share"
     export XDG_CONFIG_HOME="${HOME}/.config"
@@ -83,7 +84,7 @@ function rss_gen_send {
     TITLE="${title}"
     LINK=$(printf "href=\"%s\"" "${link}")
     DATE="${filedtime}"
-    DESC=$(printf "\n%s\n" "${description}")
+    DESC=$(printf "\n%s\nMore info at: %s" "${description}" "${link}")
     GUID="${link}" 
     loud "[info] Adding entry to RSS feed"
     xmlstarlet ed -L \
@@ -94,8 +95,8 @@ function rss_gen_send {
     -s "//channel/item[last()]" -t elem -n description -v "$DESC" \
     -s "//channel/item[last()]" -t elem -n category -v "${category}" \
     -s "//channel/item[last()]" -t elem -n guid -v "$GUID" \
-    -d "//channel/item[position()>100]" "${RSSSavePath}" ;
-    
+    -d "//channel/item[position()>50]" "${RSSSavePath}" ;
+
 }
 
 convert_filedtime_rfc2822() {
@@ -138,7 +139,23 @@ convert_filedtime_rfc2822() {
     fi
 }
 
-
+get_ai_summary() {
+    ai_description=""
+    due_time=""
+    # using mods here, free tier, so need to check errorcode afterward
+    ai_description=$(echo "${description}" | mods "In less than 300 characters including spaces, summarize the issue that comments are being sought for. Use no more than 300 characters for the summary.  Separate from the 300 character summary, in a new paragraph, place the due date for comments using the format COMMENTS_DUE: DD MMM YYYY" --quiet --word-wrap 80 )
+    
+    if [ $? != 0 ] || [ ai_description != "" ];then
+        loud "# Got summary successfully."
+        due_time=$(echo "${ai_description}" | tail -n 1 | awk -F ": " '{print $2}')
+        description=$(echo "${ai_description}")
+        echo "${description}"
+        echo "${due_time}"
+    else
+        loud "## ERROR GETTING AI SUMMARY."
+        loud "## Returned: ${ai_description}"
+    fi
+}
 
 function loud() {
 ##############################################################################
@@ -182,6 +199,8 @@ do
         category=$(echo "${description}" | fmt -w 1111 | grep -e "^AGENCY" | awk -F ': ' '{print $2}')
         tempstring=$(echo "${description}" | grep -e "FR Doc" | grep -e "Filed" )
         convert_filedtime_rfc2822 "${tempstring}"
+        loud "# getting AI summary"
+        get_ai_summary
         # add to rss
         loud "# Adding to RSS"
         rss_gen_send 
@@ -192,6 +211,8 @@ do
         description=""
         title=""
         category=""
+        due_time=""
+        ai_description=""
     fi
 done
 
