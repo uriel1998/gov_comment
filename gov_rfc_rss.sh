@@ -171,7 +171,7 @@ function toot_send {
 
     cw=$(echo "-p \"uspol\"")
     
-    postme=$(printf "cat %s | %s post %s %s -u %s" "${tempfile}" "$binary" "${cw}" "${account_using}")
+    postme=$(printf "cat %s | %s post %s -u %s" "${tempfile}" "$binary" "${cw}" "${account_using}")
     eval ${postme}
     
     if [ -f "${tempfile}" ];then
@@ -246,6 +246,8 @@ do
         # add to rss
         loud "# Adding to RSS"
         rss_gen_send 
+        loud "# Sending to Mastodon"
+        toot_send
         # save to archive
         echo "${link}" >> "${ArchiveFile}"
         # reset variables
