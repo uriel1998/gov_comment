@@ -9,9 +9,11 @@ You can follow it on [Mastodon](https://faithcollapsing.com/@USGovComment).
 
 BlueSky will be via BridgyFed once it's more than a week old, lol.
 
-The feed that is with the most recent posted is [here](https://raw.githubusercontent.com/uriel1998/gov_comment/refs/heads/master/rss_output/gov_rfc_rss.xml) .
+The feed that is with the most recent posted is on both [github](https://raw.githubusercontent.com/uriel1998/gov_comment/refs/heads/master/rss_output/gov_rfc_rss.xml) and [gitlab](https://gitlab.com/uriel1998/gov_comment/-/raw/master/rss_output/gov_rfc_rss.xml?ref_type=heads)
 
 A feed with issues where the request for comment ends soon is in the works.
+
+If you want to see the output as a web page, you can [here](https://ideatrash.net/us-government-requests-for-comment).
 
 
 ## Contents
