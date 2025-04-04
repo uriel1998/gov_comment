@@ -74,7 +74,7 @@ function rss_gen_send {
     TITLE="${title}"
     LINK=$(printf "href=\"%s\"" "${link}")
     DATE="${filedtime}"
-    DESC=$(printf "\n%s\nMore info at: %s" "${description}" "${link}")
+    DESC=$(printf "&lt;body&gt;&lt;pre&gt;\n%s\nMore info at: &lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&lt;/pre&gt;&lt;/body&gt;" "${description}" "${link}" "${link}")
     GUID="${link}" 
     loud "[info] Adding entry to RSS feed"
     xmlstarlet ed -L \
