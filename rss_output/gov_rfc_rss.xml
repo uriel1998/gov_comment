@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>US Federal Government Request For Comments</title>
+    <description>This pulls from a search of the Federal Register to pull requests for comments and make them readable. </description>
+    <link rel="self" href="https://raw.githubusercontent.com/uriel1998/gov_comment/refs/heads/master/rss_output/gov_rfc_rss.xml"/>
+    <item>
+      <title>Notice of Public Meetings and Request for Comment on the Modernization of Pilot Schools</title>
+      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm"</link>
+      <pubDate>Thu, 03 Apr 2025 08:45:00 -0400</pubDate>
+      <description>&lt;p&gt;
+The Federal Aviation Administration (FAA) is soliciting feedback regarding the modernization of pilot school regulations. The objective of the modernization is to enhance safety standards, adapt to evolving technology, and create a robust training environment to reduce general aviation fatal accidents.
+
+COMMENTS_DUE: 30 May 2025
+&lt;/p&gt;&lt;p&gt;More info at: &lt;a href="https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm"&gt;https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm&lt;/a&gt;&lt;/p&gt;</description>
+      <category>Federal Aviation Administration, U.S. Department of Transportation.</category>
+      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm</guid>
+    </item>
+    <item>
+      <title>Request for Comment To Withhold Certain Aircraft Registration Information From Public Dissemination</title>
+      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm"</link>
+      <pubDate>Wed, 02 Apr 2025 08:45:00 -0400</pubDate>
+      <description>&lt;p&gt;
+The Federal Aviation Administration (FAA) is soliciting comments about the implications of eliminating select aircraft registration data from public display on FAA websites, including current search functions and published reports. This removal aims to satisfy requirements from the FAA Reauthorization Act of 2024 for the exclusion of Personally Identifiable Information (PII) of private aircraft owners/operators from broad dissemination. 
+
+COMMENTS_DUE: 05 MAY 2025
+&lt;/p&gt;&lt;p&gt;More info at: &lt;a href="https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm"&gt;https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm&lt;/a&gt;&lt;/p&gt;</description>
+      <category>Federal Aviation Administration (FAA), Department of Transportation (DOT).</category>
+      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm</guid>
+    </item>
+    <item>
+      <title>Notice of Early Public and Governmental Engagement for Potential Designation of Tribal Energy Access, Southwestern Grid Connector, and Lake Erie-Canada National Interest Electric Transmission Corridors; Reopening of Comment Period</title>
+      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05698.htm"</link>
+      <pubDate>Wed, 02 Apr 2025 08:45:00 -0400</pubDate>
+      <description>&lt;p&gt;
+The Grid Deployment Office of the Department of Energy is seeking comments, input, and data on their potential designation of three National Interest Electric Transmission Corridors. Comments are invited on the potential environmental, cultural, and socioeconomic effects of the designations and on DOE’s engagement framework.
+
+COMMENTS_DUE: 15 APR 2025
+&lt;/p&gt;&lt;p&gt;More info at: &lt;a href="https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05698.htm"&gt;https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05698.htm&lt;/a&gt;&lt;/p&gt;</description>
+      <category>Grid Deployment Office, Department of Energy.</category>
+      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05698.htm</guid>
+    </item>
+  </channel>
+</rss>
