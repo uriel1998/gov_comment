@@ -85,7 +85,7 @@ function rss_gen_send {
     -s "//channel/item[last()]" -t elem -n description -v "$DESC" \
     -s "//channel/item[last()]" -t elem -n category -v "${category}" \
     -s "//channel/item[last()]" -t elem -n guid -v "$GUID" \
-    -d "//channel/item[position()>25]" "${RSSSavePath}" ;
+    -d "//channel/item[position()>100]" "${RSSSavePath}" ;
 
 }
 
@@ -134,24 +134,24 @@ function toot_send {
     if [ "$title" == "$link" ];then
         title=""
     fi
-    
+    loud "LINK ${link}"
     # HARDCODED
     binary=$(which toot)
         
     #Yes, I know the URL length doesn't actually count against it.  Just 
     #reusing code here.
-    bigstring=$(printf "%s \n%s \n%s\n" "$title" "$description" "$link")
+    bigstring=$(printf "%s \n%s \n%s\n" "${title}" "${description}" "${link}")
     
     if [ ${#bigstring} -lt 500 ];then 
-        printf "%s \n%s \n%s\n" "$title" "$description" "$link"  > "${tempfile}"
+        printf "%s \n%s \n%s\n" "${title}" "${description}" "${link}"  > "${tempfile}"
     else
         outstring=$(printf "%s \n%s\n" "$description" "$link")
         if [ ${#outstring} -lt 500 ]; then
-            printf "%s \n%s\n" "$description" "$link" > "${tempfile}"
+            printf "%s \n%s\n" "${description}" "${link}" > "${tempfile}"
         else
             outstring=$(printf "%s \n%s\n" "$title" "$link")
             if [ ${#outstring} -lt 500 ]; then
-                printf "%s \n%s\n" "$title" "$link" > "${tempfile}"
+                printf "%s \n%s\n" "${title}" "${link}" > "${tempfile}"
             fi
         fi
     fi
@@ -213,12 +213,17 @@ cat "${TEMPDIR}/dom.html" | sed 's/>/>\n/g' | sed -n '/<ol/,/<\/ol>/p' | sed -n 
 loud "# Extracting urls of actual articles"
 cat "${TEMPDIR}/articles.html" | grep -e "/html/" | awk -F '"' '{print "https://www.govinfo.gov" $4}' > "${TEMPDIR}/urls.txt"
 
-
+counter=0
 cat "${TEMPDIR}/urls.txt" | while read line || [[ -n $line ]];
 do
+    if [ $counter -gt 2 ];then
+        break
+    fi
     #Check URLs against collected archive
     if ! grep -q "${line}" "${ArchiveFile}"; then
         # url is not in file
+        let counter++
+        loud "# Incrementing run counter to $counter"
         loud "# Getting page of RFC"
         link="${line}"
         wget "${line}" --convert-links -O "${TEMPDIR}/tmphtml"
@@ -245,9 +250,7 @@ do
         due_time=""
         ai_description=""
     fi
-    loud "# Sleeping so OpenAI doesn't get pissy with us."
-    sleep 30
-    loud "# Still sleeping so OpenAI doesn't get pissy with us."
+    # To doublecheck that we aren't exceeding free tier API rates
     sleep 30
 done
 
