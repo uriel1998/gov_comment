@@ -3,7 +3,7 @@
   <channel>
     <title>US Federal Government Request For Comments</title>
     <description>This pulls from a search of the Federal Register to pull requests for comments and make them readable. </description>
-    <link rel="self" href="https://example.com/rss.xml"/>
+    <link rel="self" href="https://raw.githubusercontent.com/uriel1998/gov_comment/refs/heads/master/rss_output/gov_rfc_rss.xml"/>
     <item>
       <title/>
       <link>href=""</link>
@@ -21,10 +21,13 @@ More info at: </description>
       <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm"</link>
       <pubDate>Thu, 03 Apr 2025 08:45:00 -0400</pubDate>
       <description>
+          &lt;body&gt;&lt;pre&gt;
 The Federal Aviation Administration (FAA) is soliciting public input on modernizing regulations for pilot schools. The process aims to increase safety, adapt to changes in technology, and create a more effective training environment for pilots which in turn could reduce general aviation fatal accidents.
 
 COMMENTS_DUE: 30 May 2025
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm</description>
+More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm
+&lt;/pre&gt;&lt;/body&gt;
+</description>
       <category>Federal Aviation Administration, U.S. Department of Transportation.</category>
       <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm</guid>
     </item>
