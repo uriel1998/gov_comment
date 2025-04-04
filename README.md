@@ -32,3 +32,9 @@ After the script runs, there's a git commit and push to github.
 ## 2. License
 
 This project is licensed under the MIT License. For the full license, see `LICENSE`.
+
+## 3. Live Example
+
+<iframe src="//rss.bloople.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2Furiel1998%2Fgov_comment%2Frefs%2Fheads%2Fmaster%2Frss_output%2Fgov_rfc_rss.xml&limit=10&showtitle=false&type=html"></iframe>
+
+<script src="//rss.bloople.net/?url=https%3A%2F%2Fraw.githubusercontent.com%2Furiel1998%2Fgov_comment%2Frefs%2Fheads%2Fmaster%2Frss_output%2Fgov_rfc_rss.xml&limit=10&showtitle=false&type=js"></script>
