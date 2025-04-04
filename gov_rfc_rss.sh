@@ -139,6 +139,48 @@ convert_filedtime_rfc2822() {
     fi
 }
 
+function toot_send {
+    tempfile=$(mktemp)
+    if [ "$title" == "$link" ];then
+        title=""
+    fi
+    
+    # HARDCODED
+    binary="/home/steven/.local/bin/toot"
+    # MODIFY THIS, OBVIOUSLY.
+    account_using=USGovComment@faithcollapsing.com
+    
+    
+    #Yes, I know the URL length doesn't actually count against it.  Just 
+    #reusing code here.
+    bigstring=$(printf "%s \n%s \n%s\n" "$title" "$description" "$link")
+    
+    if [ ${#bigstring} -lt 500 ];then 
+        printf "%s \n%s \n%s\n" "$title" "$description" "$link"  > "${tempfile}"
+    else
+        outstring=$(printf "%s \n%s\n" "$description" "$link")
+        if [ ${#outstring} -lt 500 ]; then
+            printf "%s \n%s\n" "$description" "$link" > "${tempfile}"
+        else
+            outstring=$(printf "%s \n%s\n" "$title" "$link")
+            if [ ${#outstring} -lt 500 ]; then
+                printf "%s \n%s\n" "$title" "$link" > "${tempfile}"
+            fi
+        fi
+    fi
+
+    cw=$(echo "-p \"uspol\"")
+    
+    postme=$(printf "cat %s | %s post %s %s -u %s" "${tempfile}" "$binary" "${cw}" "${account_using}")
+    eval ${postme}
+    
+    if [ -f "${tempfile}" ];then
+        rm "${tempfile}"
+    fi
+    
+}
+
+
 get_ai_summary() {
     ai_description=""
     due_time=""
