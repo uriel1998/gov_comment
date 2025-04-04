@@ -64,8 +64,8 @@ function rss_gen_send {
         printf '<?xml version="1.0" encoding="utf-8"?>\n' > "${RSSSavePath}"
         printf '<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">\n' >> "${RSSSavePath}"
         printf '  <channel>\n' >> "${RSSSavePath}"
-        printf '    <title>My RSS Feed</title>\n' >> "${RSSSavePath}"
-        printf '    <description>This is my RSS Feed</description>\n' >> "${RSSSavePath}"
+        printf '    <title>US Federal Government Request For Comments</title>\n' >> "${RSSSavePath}"
+        printf '    <description>This pulls from a search of the Federal Register to pull requests for comments and make them readable. </description>\n' >> "${RSSSavePath}"
         printf '    <link rel="self" href="%s" />\n' "${self_link}" >> "${RSSSavePath}"
         printf '  </channel>\n' >> "${RSSSavePath}"
         printf '</rss>\n' >> "${RSSSavePath}"    
@@ -85,7 +85,7 @@ function rss_gen_send {
     -s "//channel/item[last()]" -t elem -n description -v "$DESC" \
     -s "//channel/item[last()]" -t elem -n category -v "${category}" \
     -s "//channel/item[last()]" -t elem -n guid -v "$GUID" \
-    -d "//channel/item[position()>50]" "${RSSSavePath}" ;
+    -d "//channel/item[position()>25]" "${RSSSavePath}" ;
 
 }
 
@@ -203,7 +203,7 @@ function loud() {
 
 #Use chromium to get web page
 loud "# Grabbing search page data"
-${chromium_bin} --headless --dump-dom --virtual-time-budget=10000 --timeout=10000 "https://www.govinfo.gov/app/search/%7B%22query%22%3A%22%5C%22request%20for%20comment%5C%22%22%2C%22offset%22%3A0%2C%22sortBy%22%3A%222%22%2C%22pageSize%22%3A100%7D" > "${TEMPDIR}/dom.html"
+${chromium_bin} --headless --dump-dom --virtual-time-budget=10000 --timeout=10000 "https://www.govinfo.gov/app/search/%7B%22query%22%3A%22%5C%22request%20for%20comment%5C%22%22%2C%22offset%22%3A0%2C%22sortBy%22%3A%222%22%2C%22pageSize%22%3A25%7D" > "${TEMPDIR}/dom.html"
 
 #Use sed to extract articles
 loud "# Extracting articles"
@@ -245,6 +245,10 @@ do
         due_time=""
         ai_description=""
     fi
+    loud "# Sleeping so OpenAI doesn't get pissy with us."
+    sleep 30
+    loud "# Still sleeping so OpenAI doesn't get pissy with us."
+    sleep 30
 done
 
 
