@@ -10,6 +10,10 @@
 #
 ##############################################################################
 
+# MODIFY THIS, OBVIOUSLY. For mastodon posting
+account_using=USGovComment@faithcollapsing.com
+
+
 
 ###############################################################################
 # Establishing XDG directories, or creating them if needed.
@@ -29,25 +33,11 @@ category=""
 filedtime=""
 ai_description=""
 due_time=""
-if [ -z "${XDG_DATA_HOME}" ];then
-    export XDG_DATA_HOME="${HOME}/.local/share"
-    export XDG_CONFIG_HOME="${HOME}/.config"
-fi
-
-if [ ! -d "${XDG_DATA_HOME}/gov_rfc_rss" ];then
-    mkdir -p "${XDG_DATA_HOME}/gov_rfc_rss"
-    
-fi
+ 
 
 # Now we can set these
-export DATADIR="${XDG_DATA_HOME}/gov_rfc_rss"
-ArchiveFile="${DATADIR}/retrieved_urls.txt"
-export RSSSavePath="${DATADIR}/gov_rfc_rss.xml"
-
-if [ ! -d "${XDG_CONFIG_HOME}" ];then
-    echo "Your XDG_CONFIG_HOME variable is not properly set and does not exist."
-    exit 99
-fi
+ArchiveFile="${SCRIPT_DIR}/retrieved_urls.txt"
+export RSSSavePath="${SCRIPT_DIR}/rss_output/gov_rfc_rss.xml"
 
 # This may work with firefox/mercury/etc, just haven't tried.
 
@@ -146,11 +136,8 @@ function toot_send {
     fi
     
     # HARDCODED
-    binary="/home/steven/.local/bin/toot"
-    # MODIFY THIS, OBVIOUSLY.
-    account_using=USGovComment@faithcollapsing.com
-    
-    
+    binary=$(which toot)
+        
     #Yes, I know the URL length doesn't actually count against it.  Just 
     #reusing code here.
     bigstring=$(printf "%s \n%s \n%s\n" "$title" "$description" "$link")

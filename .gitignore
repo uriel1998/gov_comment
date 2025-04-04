@@ -1,6 +1,9 @@
 # reference, old shit
 1_reference/
 
+# don't need this pushed up
+retrieved_urls.txt
+
 # macOS Junks
 .DS_Store
 
