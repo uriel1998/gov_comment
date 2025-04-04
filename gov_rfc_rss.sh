@@ -239,7 +239,7 @@ do
         loud "# Adding to RSS"
         rss_gen_send 
         loud "# Sending to Mastodon"
-        # toot_send
+        toot_send
         # save to archive
         echo "${link}" >> "${ArchiveFile}"
         # reset variables
