@@ -27,6 +27,7 @@ I won't say that's on *purpose*, but...
 
 ...anyway, this is a small effort to help make clear where your voice is requested and can make a difference.
 
+After the script runs, there's a git commit and push to github. 
 
 ## 2. License
 
