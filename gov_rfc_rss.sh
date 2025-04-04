@@ -74,7 +74,7 @@ function rss_gen_send {
     TITLE="${title}"
     LINK=$(printf "href=\"%s\"" "${link}")
     DATE="${filedtime}"
-    DESC=$(printf "&lt;body&gt;&lt;pre&gt;\n%s\nMore info at: &lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&lt;/pre&gt;&lt;/body&gt;" "${description}" "${link}" "${link}")
+    DESC=$(printf "&lt;p&gt;\n%s\n&lt;/p&gt;&lt;p&gt;More info at: &lt;a href=&quot;%s&quot;&gt;%s&lt;/a&gt;&lt;/p&gt;" "${description}" "${link}" "${link}")
     GUID="${link}" 
     loud "[info] Adding entry to RSS feed"
     xmlstarlet ed -L \
@@ -239,7 +239,7 @@ do
         loud "# Adding to RSS"
         rss_gen_send 
         loud "# Sending to Mastodon"
-        toot_send
+        # toot_send
         # save to archive
         echo "${link}" >> "${ArchiveFile}"
         # reset variables
@@ -251,6 +251,7 @@ do
         ai_description=""
     fi
     # To doublecheck that we aren't exceeding free tier API rates
+    loud "# Thirty second nap."
     sleep 30
 done
 

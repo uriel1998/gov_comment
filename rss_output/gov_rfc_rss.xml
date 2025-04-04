@@ -5,29 +5,14 @@
     <description>This pulls from a search of the Federal Register to pull requests for comments and make them readable. </description>
     <link rel="self" href="https://raw.githubusercontent.com/uriel1998/gov_comment/refs/heads/master/rss_output/gov_rfc_rss.xml"/>
     <item>
-      <title/>
-      <link>href=""</link>
-      <pubDate/>
-      <description>
-The FCC seeks public comment on the proposed guidelines for the Emergency Broadband Benefit Program, aimed to support low-income households' broadband access during the pandemic.
-
-COMMENTS_DUE: 25 MAR 2021
-More info at: </description>
-      <category/>
-      <guid/>
-    </item>
-    <item>
       <title>Notice of Public Meetings and Request for Comment on the Modernization of Pilot Schools</title>
       <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm"</link>
       <pubDate>Thu, 03 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-          &lt;p&gt;
-The Federal Aviation Administration (FAA) is soliciting public input on modernizing regulations for pilot schools. The process aims to increase safety, adapt to changes in technology, and create a more effective training environment for pilots which in turn could reduce general aviation fatal accidents.
+      <description>&lt;p&gt;
+The Federal Aviation Administration (FAA) is seeking comments regarding the modernization of pilot school regulations. FAA aims to have discussions with flight training industry to create a robust, safe training environment, and address challenges related to evolving technology, certification, examining authority and learning methods.
 
-COMMENTS_DUE: 30 May 2025&lt;/p&gt;
-&lt;p&gt;More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm&lt;/p&gt;
-
-</description>
+COMMENTS_DUE: 30 MAY 2025
+&lt;/p&gt;&lt;p&gt;More info at: &lt;a href="https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm"&gt;https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm&lt;/a&gt;&lt;/p&gt;</description>
       <category>Federal Aviation Administration, U.S. Department of Transportation.</category>
       <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-04/html/2025-05795.htm</guid>
     </item>
@@ -35,93 +20,13 @@ COMMENTS_DUE: 30 May 2025&lt;/p&gt;
       <title>Request for Comment To Withhold Certain Aircraft Registration Information From Public Dissemination</title>
       <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm"</link>
       <pubDate>Wed, 02 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-The Federal Aviation Administration (FAA) is seeking comments on the impacts of removing certain aircraft registration data from public display on the FAA website. The removal is intended to fulfill section 803 of the FAA Reauthorization Act of 2024, requiring the elimination of private aircraft owner or operator's private information from the FAA's broad display and dissemination.
+      <description>&lt;p&gt;
+The Federal Aviation Administration (FAA) is seeking comments on the impact of removing certain aircraft registration data, including private owner's Personally Identifiable Information (PII), from public display on the FAA website as per requirement Section 803 of the FAA Reauthorization Act of 2024.
 
-COMMENTS_DUE: 05 May 2025
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm</description>
+COMMENTS_DUE: 05 MAY 2025
+&lt;/p&gt;&lt;p&gt;More info at: &lt;a href="https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm"&gt;https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm&lt;/a&gt;&lt;/p&gt;</description>
       <category>Federal Aviation Administration (FAA), Department of Transportation (DOT).</category>
       <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05738.htm</guid>
-    </item>
-    <item>
-      <title>Notice of Early Public and Governmental Engagement for Potential Designation of Tribal Energy Access, Southwestern Grid Connector, and Lake Erie-Canada National Interest Electric Transmission Corridors; Reopening of Comment Period</title>
-      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05698.htm"</link>
-      <pubDate>Wed, 02 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-The Department of Energy's Grid Deployment Office is reopening the comment period for public input on the consideration of three potential National Interest Electric Transmission Corridors. This includes any potential effects and appropriate methods for future NIETC-specific meetings.
-
-COMMENTS_DUE: 15 APR 2025
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05698.htm</description>
-      <category>Grid Deployment Office, Department of Energy.</category>
-      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-03/html/2025-05698.htm</guid>
-    </item>
-    <item>
-      <title>Proposed Agency Information Collection Activities; Comment Request</title>
-      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05644.htm"</link>
-      <pubDate>Tue, 01 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-The Board of Governors of the Federal Reserve System is seeking comments on a proposal to extend for three years, without revision, the Investment in Bank Premises Notification (FR 4014; OMB No. 7100-0139).
-
-COMMENTS_DUE: 02 JUN 2025
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05644.htm</description>
-      <category>Board of Governors of the Federal Reserve System.</category>
-      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05644.htm</guid>
-    </item>
-    <item>
-      <title>Proposed Agency Information Collection Activities; Comment Request</title>
-      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05647.htm"</link>
-      <pubDate>Tue, 01 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-The Board of Governors of the Federal Reserve System is seeking for public comments related to a proposal to extend for three years without revision, the Recordkeeping and Disclosure Requirements Associated with Regulation H. The regulation pertains to loans secured by real estate located in flood hazard areas.
-
-COMMENTS_DUE: 02 Jun 2025
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05647.htm</description>
-      <category>Board of Governors of the Federal Reserve System.</category>
-      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05647.htm</guid>
-    </item>
-    <item>
-      <title>Draft Environmental Assessment, Public Hearing, and Request for Comment on the Draft Environmental Assessment, Maximum Economic Recovery, and Fair Market Value for the Freedom Mine Company Proposed Emergency Federal Coal Lease-by-Application and Mining Plan Modification for NDM 111186 and Mining Plan Modification for NDM 091535, Mercer County, ND</title>
-      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05671.htm"</link>
-      <pubDate>Tue, 01 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-The Bureau of Land Management is seeking public comment on the draft environmental assessment for the proposed emergency lease of federal coal resources at the Freedom Mine to the Coteau Property Company. Comments are also sought on the proposed modifications to the mining plan and on considerations for fair market value and maximum economic recovery.
-
-COMMENTS_DUE: 02 May 2025
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05671.htm</description>
-      <category>Bureau of Land Management, Interior.</category>
-      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05671.htm</guid>
-    </item>
-    <item>
-      <title>Agency Information Collection Activities; Submission to the Office of Management and Budget for Review and Approval; Bureau of Reclamation Use Authorization Application</title>
-      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05571.htm"</link>
-      <pubDate>Tue, 01 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05571.htm</description>
-      <category>Bureau of Reclamation, Interior.</category>
-      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05571.htm</guid>
-    </item>
-    <item>
-      <title>Proposed Extension of Information Collection; Employers' Claim for Reimbursement Assisted Reemployment (AR) Program</title>
-      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05583.htm"</link>
-      <pubDate>Tue, 01 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-The Department of Labor is seeking public comment on the proposal to extend the information collection for the Employers' Claim for Reimbursement--Assisted Reemployment Program. This is part of the Labor Department's ongoing efforts to reduce paperwork. 
-
-COMMENTS_DUE: 02 JUN 2025
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05583.htm</description>
-      <category>Office of Workers' Compensation Programs, Labor.</category>
-      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05583.htm</guid>
-    </item>
-    <item>
-      <title>State of Connecticut: NRC Staff Assessment of a Proposed Agreement Between the Nuclear Regulatory Commission and the State of Connecticut</title>
-      <link>href="https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05139.htm"</link>
-      <pubDate>Tue, 01 Apr 2025 08:45:00 -0400</pubDate>
-      <description>
-
-More info at: https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05139.htm</description>
-      <category>Nuclear Regulatory Commission.</category>
-      <guid>https://www.govinfo.gov/content/pkg/FR-2025-04-02/html/2025-05139.htm</guid>
     </item>
   </channel>
 </rss>
