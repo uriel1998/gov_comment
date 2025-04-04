@@ -249,10 +249,10 @@ do
         category=""
         due_time=""
         ai_description=""
+        # To doublecheck that we aren't exceeding free tier API rates
+        loud "# Thirty second nap."
+        sleep 30
     fi
-    # To doublecheck that we aren't exceeding free tier API rates
-    loud "# Thirty second nap."
-    sleep 30
 done
 
 
